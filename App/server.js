@@ -12,8 +12,9 @@ db.sequelize.sync().then(() => {
 
 // Configuración de CORS para permitir solicitudes desde localhost:3000
 const corsOptions = {
-  origin: 'http://localhost:3000',
-  optionsSuccessStatus: 200
+  origin:'http://localhost:3000',
+  
+  optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
 
