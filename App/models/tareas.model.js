@@ -42,7 +42,7 @@ module.exports = (sequelize, Sequelize) => {
         timestamps: false // Si quieres usar createdAt y updatedAt, cambia a true
     });
 
-    return Proyecto;
+    return Tareas;
 };
 
 const express = require('express');
