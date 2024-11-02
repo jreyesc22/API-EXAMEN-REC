@@ -22,7 +22,7 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 // Rutas
-app.use('/', librosRouter); // Ruta para libros
+app.use('/', tareas);
 
 // Ruta raíz de bienvenida
 app.get("/", (req, res) => {
