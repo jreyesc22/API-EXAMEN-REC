@@ -16,3 +16,21 @@ const corsOptions = {
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
+
+// Middlewares
+app.use(bodyParser.json());
+
+// Rutas
+app.use('/', librosRouter); // Ruta para libros
+
+// Ruta raíz de bienvenida
+app.get("/", (req, res) => {
+  res.json({ message: "Bienvenido Estudiantes de UMG" });
+});
+
+// Configuración del servidor
+const server = app.listen(8080, function () {
+  const host = server.address().address;
+  const port = server.address().port;
+  console.log("App escuchando en http://%s:%s", host, port);
+});
