@@ -28,7 +28,6 @@ app.use('/api/tareas', tareasRoutes); // Usa el router de rutas aquí
 app.get("/", (req, res) => {
   res.json({ message: "Bienvenido Estudiantes de UMG" });
 });
-
 // Configuración del servidor
 const server = app.listen(8080, function () {
   const host = server.address().address;
