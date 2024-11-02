@@ -1,4 +1,4 @@
-nomodule.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, Sequelize) => {
     const Tareas = sequelize.define('tareas', {
         id_tarea: {
             type: Sequelize.INTEGER,
