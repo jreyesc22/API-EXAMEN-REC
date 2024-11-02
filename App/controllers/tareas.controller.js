@@ -1,4 +1,4 @@
-const db = require('../models/tareas.model'); // Asegúrate de que tu modelo esté exportado correctamente
+const db = require('../models/tareas.model.js'); // Asegúrate de que tu modelo esté exportado correctamente
 
 // Crear una nueva tarea
 exports.createTarea = async (req, res) => {
