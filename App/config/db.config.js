@@ -1,37 +1,27 @@
 const env = require('./env.js');
 
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize(env.database, env.username, env.password,{
-
+const sequelize = new Sequelize(env.database, env.username, env.password, {
     host: env.host,
     dialect: env.dialect,
-    dialectOptions:{
-
-        ssl:{require:true,
-            rejectUnauthorized:false
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
         }
     },
-
-operatorsAliases:false,
-
-pool: {
-
-    max: env.pool.max,
-    min:env.pool.min,
-    acquire: env.pool.acquire,
-    idle: env.pool.idle,
-
-}
-
+    pool: {
+        max: env.pool.max,
+        min: env.pool.min,
+        acquire: env.pool.acquire,
+        idle: env.pool.idle
+    }
 });
 
-const db= {};
+const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.usuarios = require('../models/tareas.model.js')(sequelize, Sequelize.DataTypes); //modelo de Usurios en la base de datos
-
-
+db.usuarios = require('../models/tareas.model.js')(sequelize, Sequelize.DataTypes); // modelo de Usuarios en la base de datos
 
 module.exports = db;
-
