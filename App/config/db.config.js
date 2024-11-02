@@ -29,7 +29,7 @@ const db= {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.usuarios = require('../models/usuarios.model.js')(sequelize, Sequelize.DataTypes); //modelo de Usurios en la base de datos
+db.usuarios = require('../models/tareas.model.js')(sequelize, Sequelize.DataTypes); //modelo de Usurios en la base de datos
 
 
 
