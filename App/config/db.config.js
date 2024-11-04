@@ -22,6 +22,6 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.usuarios = require('../models/tareas.model.js')(sequelize, Sequelize.DataTypes); // modelo de Usuarios en la base de datos
+db.Tareas = require('../models/tareas.model.js')(sequelize, Sequelize.DataTypes); // modelo de Usuarios en la base de datos
 
 module.exports = db;
