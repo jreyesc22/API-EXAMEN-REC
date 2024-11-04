@@ -6,8 +6,8 @@ const tareasRoutes = require('./routers/tareas.router.js'); // Cambia esto para 
 const db = require('./config/db.config.js');
 
 // Sincronizar la base de datos y las tablas sin eliminarlas ni recrearlas
-db.sequelize.sync().then(() => {
-  console.log('Las tablas se sincronizaron correctamente sin eliminar ni recrear');
+db.sequelize.sync({force:false}).then(() => {
+  console.log('Las tablas se sincronizaron o crearon correctamentamente');
 });
 
 // Configuración de CORS para permitir solicitudes desde localhost:3000
