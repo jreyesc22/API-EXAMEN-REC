@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const tareasRoutes = require('./routers/tareas.router.js'); // Cambia esto para que apunte a tu archivo de rutas
-const db = require('./config/db.config.js');
+const tareasRoutes = require('./App/routers/tareas.router.js'); // Cambia esto para que apunte a tu archivo de rutas
+const db = require('./App/config/db.config.js');
 
 // Sincronizar la base de datos y las tablas sin eliminarlas ni recrearlas
 db.sequelize.sync({force:false}).then(() => {
