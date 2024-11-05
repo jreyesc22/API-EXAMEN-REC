@@ -7,6 +7,6 @@ router.post('/create', tareaController.createTarea);
 router.get('/all', tareaController.getTareas);
 router.get('/:id', tareaController.getTareaById);
 router.put('/:id', tareaController.updateTarea);
-router.delete('/:id', tareaController.deleteTarea);
+router.delete('/delete/:id', tareaController.deleteTarea);
 
 module.exports = router;
