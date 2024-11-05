@@ -7,7 +7,7 @@ const db = require('./App/config/db.config.js');
 
 
 // Sincronizar la base de datos y las tablas sin eliminarlas ni recrearlas
-db.sequelize.sync({force:false}).then(() => {
+db.sequelize.sync({force:true}).then(() => {
   console.log('Las tablas se sincronizaron o crearon correctamentamente');
 });
 
