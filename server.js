@@ -1,42 +1,34 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
 const cors = require('cors');
-const tareasRoutes = require('./App/routers/tareas.router.js'); // Cambia esto para que apunte a tu archivo de rutas
+const tareasRoutes = require('./App/routers/tareas.router.js'); // Ajusta la ruta si es necesario
 const db = require('./App/config/db.config.js');
 
-
-// Sincronizar la base de datos y las tablas sin eliminarlas ni recrearlas
-db.sequelize.sync({force:true}).then(() => {
-  console.log('Las tablas se sincronizaron o crearon correctamentamente');
+// Sincronizar la base de datos sin eliminar las tablas existentes
+db.sequelize.sync({ force: false }).then(() => {
+  console.log('Las tablas están sincronizadas correctamente');
 });
 
-// Configuración de CORS para permitir solicitudes desde localhost:3000
-
-
+// Configuración de CORS para permitir solicitudes desde dominios específicos
 const corsOptions = {
   origin: ['http://localhost:3000', 'https://tareas-app-6y77.onrender.com'],
   optionsSuccessStatus: 200,
 };
-
 app.use(cors(corsOptions));
 
-
-app.use(cors(corsOptions));
-
-// Middlewares
-app.use(bodyParser.json());
+// Middleware para manejar JSON
+app.use(express.json());
 
 // Rutas
-app.use('/api/tareas', tareasRoutes); // Usa el router de rutas aquí
+app.use('/api/tareas', tareasRoutes); // Usa el router de tareas
 
 // Ruta raíz de bienvenida
 app.get("/", (req, res) => {
   res.json({ message: "Bienvenido Estudiantes de UMG" });
 });
+
 // Configuración del servidor
-const server = app.listen(8080, function () {
-  const host = server.address().address;
-  const port = server.address().port;
-  console.log("App escuchando en http://%s:%s", host, port);
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`App escuchando en http://localhost:${PORT}`);
 });
