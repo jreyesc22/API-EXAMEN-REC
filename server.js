@@ -15,7 +15,7 @@ db.sequelize.sync({ force: false }).then(() => {
 
 // Configuración de CORS para permitir solicitudes desde dominios específicos
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://tareas-app-6y77.onrender.com'],
+  origin: ['http://localhost:3000', 'https://api-examen-rec.onrender.com'],
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
