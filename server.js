@@ -1,7 +1,12 @@
 const express = require('express');
-const app = express();
 const cors = require('cors');
+const app = express();
+
+// Importar rutas
 const tareasRoutes = require('./App/routers/tareas.router.js'); // Ajusta la ruta si es necesario
+const productosRoutes = require('./App/routers/producto.router.js'); // Nueva ruta para productos
+
+// Importar configuración de base de datos
 const db = require('./App/config/db.config.js');
 
 // Sincronizar la base de datos sin eliminar las tablas existentes
@@ -20,7 +25,8 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // Rutas
-app.use('/api/tareas', tareasRoutes); // Usa el router de tareas
+app.use('/api/tareas', tareasRoutes); // Rutas para tareas
+app.use('/api/medicamentos', productosRoutes); // Nueva ruta para productos
 
 // Ruta raíz de bienvenida
 app.get("/", (req, res) => {
