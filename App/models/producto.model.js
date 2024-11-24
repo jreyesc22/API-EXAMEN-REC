@@ -1,5 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
     const Producto = sequelize.define('producto', {
+
       id_producto: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -7,7 +8,7 @@ module.exports = (sequelize, Sequelize) => {
       },
       Nombre: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       Precio: {
         type: Sequelize.DECIMAL,
