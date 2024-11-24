@@ -1,4 +1,4 @@
-const db = require('../models/producto.model.js');
+const db = require('../config/db.config.js');
 const Producto = db.producto;
 
 // Crear y guardar un nuevo producto
