@@ -23,5 +23,5 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 
-db.producto= require('../models/producto.model.js')(sequelize, Sequelize.DataTypes); 
+db.medicamento= require('../models/producto.model.js')(sequelize, Sequelize.DataTypes); 
 module.exports = db;
