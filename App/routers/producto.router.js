@@ -5,8 +5,8 @@ const router = express.Router();
 
 router.post('/crear', medicamentoController.createMedicamento); // Crear
 router.get('/all', medicamentoController.getMedicamentos); // Leer todos
-router.get('/:idProducto', medicamentoController.getMedicamentoById); // Leer uno
-router.put('/:idProducto', medicamentoController.updateMedicamento); // Actualizar
-router.delete('/:idProducto', medicamentoController.deleteMedicamento); // Eliminar
+router.get('/obtener/:idProducto', medicamentoController.getMedicamentoById); // Leer uno
+router.put('/actualizar/:idProducto', medicamentoController.updateMedicamento); // Actualizar
+router.delete('/eliminar/:idProducto', medicamentoController.deleteMedicamento); // Eliminar
 
 module.exports = router;

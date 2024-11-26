@@ -7,10 +7,7 @@ module.exports = (sequelize) => {
       autoIncrement: true,
       primaryKey: true,
     },
-    idProducto: {
-      type: DataTypes.STRING,
-    },
-    nombre: {
+     nombre: {
       type: DataTypes.STRING,
     },
     precio: {
