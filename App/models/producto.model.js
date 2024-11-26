@@ -24,10 +24,9 @@ module.exports = (sequelize, Sequelize) => {
           defaultValue: Sequelize.NOW,
       },
       statusPago: {
-          type: Sequelize.ENUM('pagado', 'no pagado'),
-          allowNull: false,
-          defaultValue: 'no pagado',
-      },
+        type: Sequelize.STRING,
+        allowNull: true}
+      
   });
 
   return Producto;
