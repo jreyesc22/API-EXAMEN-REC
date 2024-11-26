@@ -1,6 +1,4 @@
-const db = require('../config/db.config.js');
-const Producto = db.producto;
-//const Producto = require('../models/Producto'); // Importa el modelo correctamente
+const Producto = require('../models/producto.model.js'); // Importa correctamente tu modelo
 
 // Crear y guardar un nuevo producto
 exports.create = async (req, res) => {
@@ -10,7 +8,7 @@ exports.create = async (req, res) => {
         // Validar campos requeridos
         if (!nombre || precio == null || !fecha || !statusPago) {
             return res.status(400).send({
-                message: "Los campos 'nombre', 'precio', 'fecha' y 'statusPago' son obligatorios."
+                message: "Los campos 'nombre', 'precio', 'fecha' y 'statusPago' son obligatorios.",
             });
         }
 
@@ -26,7 +24,7 @@ exports.create = async (req, res) => {
         res.status(201).send(nuevoProducto);
     } catch (error) {
         res.status(500).send({
-            message: error.message || "Ocurrió un error al crear el producto."
+            message: error.message || "Ocurrió un error al crear el producto.",
         });
     }
 };
@@ -38,7 +36,7 @@ exports.findAll = async (req, res) => {
         res.status(200).send(productos);
     } catch (error) {
         res.status(500).send({
-            message: error.message || "Ocurrió un error al recuperar los productos."
+            message: error.message || "Ocurrió un error al recuperar los productos.",
         });
     }
 };
@@ -47,18 +45,19 @@ exports.findAll = async (req, res) => {
 exports.findOne = async (req, res) => {
     try {
         const { id } = req.params;
+
         const producto = await Producto.findByPk(id);
 
         if (!producto) {
             return res.status(404).send({
-                message: `No se encontró un producto con el id=${id}.`
+                message: `No se encontró un producto con el id=${id}.`,
             });
         }
 
         res.status(200).send(producto);
     } catch (error) {
         res.status(500).send({
-            message: `Error al recuperar el producto con id=${id}.`
+            message: `Error al recuperar el producto con id=${id}.`,
         });
     }
 };
@@ -72,7 +71,7 @@ exports.update = async (req, res) => {
         // Validar campos requeridos
         if (!nombre || precio == null || !fecha || !statusPago) {
             return res.status(400).send({
-                message: "Los campos 'nombre', 'precio', 'fecha' y 'statusPago' son obligatorios para la actualización."
+                message: "Los campos 'nombre', 'precio', 'fecha' y 'statusPago' son obligatorios para la actualización.",
             });
         }
 
@@ -83,16 +82,16 @@ exports.update = async (req, res) => {
 
         if (actualizados === 0) {
             return res.status(404).send({
-                message: `No se encontró o no se pudo actualizar el producto con id=${id}.`
+                message: `No se encontró o no se pudo actualizar el producto con id=${id}.`,
             });
         }
 
         res.status(200).send({
-            message: "El producto fue actualizado exitosamente."
+            message: "El producto fue actualizado exitosamente.",
         });
     } catch (error) {
         res.status(500).send({
-            message: `Error al actualizar el producto con id=${id}.`
+            message: `Error al actualizar el producto con id=${id}.`,
         });
     }
 };
@@ -103,21 +102,21 @@ exports.delete = async (req, res) => {
         const { id } = req.params;
 
         const eliminados = await Producto.destroy({
-            where: { id_producto: id }
+            where: { id_producto: id },
         });
 
         if (eliminados === 0) {
             return res.status(404).send({
-                message: `No se encontró o no se pudo eliminar el producto con id=${id}.`
+                message: `No se encontró o no se pudo eliminar el producto con id=${id}.`,
             });
         }
 
         res.status(200).send({
-            message: "El producto fue eliminado exitosamente."
+            message: "El producto fue eliminado exitosamente.",
         });
     } catch (error) {
         res.status(500).send({
-            message: `Error al eliminar el producto con id=${id}.`
+            message: `Error al eliminar el producto con id=${id}.`,
         });
     }
 };

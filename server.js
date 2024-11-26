@@ -9,7 +9,7 @@ const productosRoutes = require('./App/routers/producto.router.js'); // Nueva ru
 const db = require('./App/config/db.config.js');
 
 // Sincronizar la base de datos sin eliminar las tablas existentes
-db.sequelize.sync({ force: false }).then(() => {
+db.sequelize.sync({ force: true }).then(() => {
   console.log('Las tablas están sincronizadas correctamente');
 });
 

@@ -1,38 +1,34 @@
 module.exports = (sequelize, Sequelize) => {
-    const Producto = sequelize.define('producto', {
+  const Producto = sequelize.define('producto', {
       id_producto: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
+          type: Sequelize.INTEGER,
+          primaryKey: true,
+          autoIncrement: true,
       },
-      nombre: { // Normalizamos a minúsculas para consistencia
-        type: Sequelize.STRING(100), // Limitar longitud máxima a 100 caracteres
-        allowNull: false, // Hacerlo obligatorio
+      nombre: {
+          type: Sequelize.STRING(100),
+          allowNull: false,
       },
       precio: {
-        type: Sequelize.DECIMAL(10, 2), // Manejar hasta 99999999.99
-        allowNull: false, // Obligatorio
-        validate: { min: 0 }, // Validar que sea un número positivo
+          type: Sequelize.DECIMAL(10, 2),
+          allowNull: false,
+          validate: { min: 0 },
       },
       descripcion: {
-        type: Sequelize.STRING(255), // Limitar a 255 caracteres
-        allowNull: true,
+          type: Sequelize.STRING(255),
+          allowNull: true,
       },
       fecha: {
-        type: Sequelize.DATE,
-        allowNull: false, // Obligatorio
-        defaultValue: Sequelize.NOW, // Fecha actual como predeterminada
+          type: Sequelize.DATE,
+          allowNull: false,
+          defaultValue: Sequelize.NOW,
       },
       statusPago: {
-        type: Sequelize.ENUM('pagado', 'no pagado'),
-        allowNull: false, // Obligatorio
-        defaultValue: 'no pagado', // Predeterminado como 'no pagado'
+          type: Sequelize.ENUM('pagado', 'no pagado'),
+          allowNull: false,
+          defaultValue: 'no pagado',
       },
-    }, {
-      tableName: 'productos', // Nombre de tabla explícito
-      timestamps: false, // Deshabilitar createdAt y updatedAt si no los necesitas
-    });
-  
-    return Producto;
-  };
-  
+  });
+
+  return Producto;
+};

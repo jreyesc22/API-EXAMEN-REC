@@ -9,10 +9,10 @@ router.post('/crear', productos.create);
 router.get('/all', productos.findAll);
 
 // Recuperar un solo producto por ID
-router.get('obtener/:id', productos.findOne);
+router.get('/obtener/:id', productos.findOne);
 
 // Actualizar un producto por ID
-router.put('actualizar/:id', productos.update);
+router.put('/actualizar/:id', productos.update);
 
 // Eliminar un producto por ID
 router.delete('/eliminar/:id', productos.delete);
