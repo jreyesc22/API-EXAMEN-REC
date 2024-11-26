@@ -1,33 +1,45 @@
-module.exports = (sequelize, Sequelize) => {
-  const Producto = sequelize.define('producto', {
-      id_producto: {
-          type: Sequelize.INTEGER,
-          primaryKey: true,
-          autoIncrement: true,
+const { DataTypes } = require('sequelize');
+
+module.exports = (sequelize) => {
+  const Medicamento = sequelize.define('Medicamento', {
+    idProducto: {
+      type: DataTypes.STRING,
+      allowNull: false, // Campo obligatorio
+      unique: true, // Debe ser único
+    },
+    nombre: {
+      type: DataTypes.STRING,
+      allowNull: false, // Campo obligatorio
+      trim: true, // Elimina espacios en blanco (manejado en frontend/back)
+    },
+    precio: {
+      type: DataTypes.DECIMAL(10, 2), // Manejo de decimales con precisión
+      allowNull: false, // Campo obligatorio
+      validate: {
+        isDecimal: true, // Asegura que sea un número decimal
+        min: 0, // El precio debe ser positivo
       },
-      nombre: {
-          type: Sequelize.STRING,
-          allowNull: false,
+    },
+    descripcion: {
+      type: DataTypes.TEXT,
+      allowNull: true, // Campo opcional
+    },
+    fecha: {
+      type: DataTypes.DATEONLY, // Fecha en formato yyyy-mm-dd
+      allowNull: false, // Campo obligatorio
+      validate: {
+        isDate: true, // Valida que sea una fecha válida
       },
-      precio: {
-          type: Sequelize.DECIMAL(10, 2),
-          allowNull: false,
-          validate: { min: 0 },
-      },
-      descripcion: {
-          type: Sequelize.STRING,
-          allowNull: true,
-      },
-      fecha: {
-          type: Sequelize.DATE,
-          allowNull: true,
-          defaultValue: Sequelize.NOW,
-      },
-      statusPago: {
-        type: Sequelize.STRING,
-        allowNull: true}
-      
+    },
+    statusPago: {
+      type: DataTypes.ENUM('pagado', 'pendiente'), // Opciones limitadas
+      allowNull: true, // Campo opcional
+      defaultValue: 'pendiente', // Valor por defecto
+    },
+  }, {
+    tableName: 'Medicamentos', // Nombre de la tabla en la base de datos
+    timestamps: true, // Crea columnas createdAt y updatedAt automáticamente
   });
 
-  return Producto;
+  return Medicamento;
 };
