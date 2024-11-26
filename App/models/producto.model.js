@@ -6,7 +6,7 @@ module.exports = (sequelize, Sequelize) => {
           autoIncrement: true,
       },
       nombre: {
-          type: Sequelize.STRING(100),
+          type: Sequelize.STRING,
           allowNull: false,
       },
       precio: {
@@ -15,12 +15,12 @@ module.exports = (sequelize, Sequelize) => {
           validate: { min: 0 },
       },
       descripcion: {
-          type: Sequelize.STRING(255),
+          type: Sequelize.STRING,
           allowNull: true,
       },
       fecha: {
           type: Sequelize.DATE,
-          allowNull: false,
+          allowNull: true,
           defaultValue: Sequelize.NOW,
       },
       statusPago: {
