@@ -36,9 +36,6 @@ module.exports = (sequelize) => {
       allowNull: true, // Campo opcional
       defaultValue: 'pendiente', // Valor por defecto
     },
-  }, {
-    tableName: 'Medicamentos', // Nombre de la tabla en la base de datos
-    timestamps: true, // Crea columnas createdAt y updatedAt automáticamente
   });
 
   return Medicamento;
