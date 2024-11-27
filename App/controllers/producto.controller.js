@@ -1,4 +1,6 @@
-const Medicamento = require('../models/producto.model.js'); // Importa correctamente tu modelo
+
+const db = require('../config/db.config.js')
+const Medicamento = db.Medicamento; 
 
 // Crear un nuevo medicamento
 exports.createMedicamento = async (req, res) => {

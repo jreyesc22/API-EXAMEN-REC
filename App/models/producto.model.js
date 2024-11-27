@@ -1,26 +1,24 @@
-const { DataTypes } = require('sequelize');
-
-module.exports = (sequelize) => {
+module.exports = (sequelize, Sequelize) => {
   const Medicamento = sequelize.define('Medicamento', {
     id: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
     },
      nombre: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
     },
     precio: {
-      type: DataTypes.DECIMAL(10, 2),
+      type: Sequelize.DECIMAL(10, 2),
     },
     descripcion: {
-      type: DataTypes.TEXT,
+      type: Sequelize.TEXT,
     },
     fecha: {
-      type: DataTypes.DATEONLY,
+      type: Sequelize.DATEONLY,
     },
     statusPago: {
-      type: DataTypes.ENUM('pagado', 'pendiente'),
+      type: Sequelize.STRING,
     },
   });
 

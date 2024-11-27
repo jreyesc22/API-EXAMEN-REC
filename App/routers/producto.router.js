@@ -1,12 +1,12 @@
 const express = require('express');
-const medicamentoController = require('../controllers/producto.controller.js');
+const medicamento = require('../controllers/producto.controller.js');
 
 const router = express.Router();
 
-router.post('/crear', medicamentoController.createMedicamento); // Crear
-router.get('/all', medicamentoController.getMedicamentos); // Leer todos
-router.get('/obtener/:idProducto', medicamentoController.getMedicamentoById); // Leer uno
-router.put('/actualizar/:idProducto', medicamentoController.updateMedicamento); // Actualizar
-router.delete('/eliminar/:idProducto', medicamentoController.deleteMedicamento); // Eliminar
+router.post('/crear', medicamento.createMedicamento); // Crear
+router.get('/all', medicamento.getMedicamentos); // Leer todos
+router.get('/obtener/:idProducto', medicamento.getMedicamentoById); // Leer uno
+router.put('/actualizar/:idProducto', medicamento.updateMedicamento); // Actualizar
+router.delete('/eliminar/:idProducto', medicamento.deleteMedicamento); // Eliminar
 
 module.exports = router;

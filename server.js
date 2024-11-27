@@ -1,38 +1,41 @@
 const express = require('express');
-const cors = require('cors');
 const app = express();
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const LibrosRouter = require('./app/routers/libros.router.js'); // Rutas de libros
+const MedicamentosRouter = require('./app/routers/medicamento.router.js'); // Rutas de medicamentos
+const db = require('./app/config/db.config.js');
 
-// Importar rutas
-const productosRoutes = require('./App/routers/producto.router.js'); // Nueva ruta para productos
-
-// Importar configuración de base de datos
-const db = require('./App/config/db.config.js');
-
-// Sincronizar la base de datos sin eliminar las tablas existentes
+// Sincronizar la base de datos y las tablas
 db.sequelize.sync({ force: true }).then(() => {
-  console.log('Las tablas están sincronizadas correctamente');
+  console.log('Se eliminaron y re-crearon las tablas con { force: true }');
 });
 
-// Configuración de CORS para permitir solicitudes desde dominios específicos
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://api-examen-rec.onrender.com'],
-  optionsSuccessStatus: 200,
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200
 };
+
+// Configuración de CORS
 app.use(cors(corsOptions));
 
-// Middleware para manejar JSON
-app.use(express.json());
+// Middleware para procesar el cuerpo de las solicitudes en formato JSON
+app.use(bodyParser.json());
 
-// Rutas
-app.use('/api/medicamentos', productosRoutes); // Nueva ruta para productos
+// Usar las rutas de libros
+app.use('/api/libros', LibrosRouter);
 
-// Ruta raíz de bienvenida
+// Usar las rutas de medicamentos
+app.use('/api/medicamentos', MedicamentosRouter);
+
+// Ruta raíz
 app.get("/", (req, res) => {
   res.json({ message: "Bienvenido Estudiantes de UMG" });
 });
 
-// Configuración del servidor
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`App escuchando en http://localhost:${PORT}`);
+// Configuración del servidor para escuchar en el puerto 8080
+const server = app.listen(8080, function () {
+  const host = server.address().address;
+  const port = server.address().port;
+  console.log("App escuchando en http://%s:%s", host, port);
 });
