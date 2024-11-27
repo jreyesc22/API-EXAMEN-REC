@@ -11,8 +11,9 @@ db.sequelize.sync({ force: true }).then(() => {
   console.log('Se eliminaron y re-crearon las tablas con { force: true }');
 });
 
+// Actualizamos las opciones de CORS
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: ['http://localhost:3000', 'https://proyecto-farmacia-frontend.onrender.com'],
   optionsSuccessStatus: 200
 };
 
